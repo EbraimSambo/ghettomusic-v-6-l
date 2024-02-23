@@ -1,0 +1,1 @@
+<p id="credit"> 2024 - {{date('Y')}} &copy; </p>

@@ -1,0 +1,227 @@
+@use '../functions/variables'
+@use '../functions/mixins'
+@use '../functions/functions'
+// AppLayout
+#appLayout
+    position: relative
+    display: grid
+    grid-template-columns: minmax(0,2fr) minmax(0,8fr)
+    gap: .7rem
+    min-height: 100vh
+    @include functions.responsive($w: 1024px)
+        grid-template-columns: minmax(100%,1fr)    
+    a, h1,h2,h3,h4,p,label, textarea, input::placeholder, input
+        color: #fff
+    a:hover
+        color: map-get(variables.$Hovercolors, one)
+
+// LeftLayout
+#leftLayout
+    height: 100vh
+    background: map-get(variables.$colors, color-secundary)
+    box-shadow: variables.$box-shadow
+    position: sticky
+    top: 0
+    left: 0
+    bottom: 0
+    padding: 2rem
+    z-index: 999
+    @include mixins.flex-column-space-between
+    @include functions.responsive($w: 1024px)
+        position: fixed
+        left: -199%
+        @include functions.max-width($width: 350px)
+        @include functions.responsive($w: 724px)
+            @include functions.max-width($width: 500px)
+        &.active
+            left: 0 !important
+        
+
+// LeftLayot - Sidebar
+#top-sidebar
+    @include functions.flex-column-gap($gap: 2.5rem)
+    nav
+        @include functions.flex-column-gap($gap: 2.5rem)
+        ul
+            @include functions.flex-column-gap($gap: 1.3rem)
+            margin-left: 1rem
+            .desible
+                color: #ccc
+                font-weight: bold
+                font-size: 1.3rem
+            li
+                a
+                    @include functions.flex-center-gap($gap: .5rem)
+                    margin-left: 1.2rem
+                    svg
+                        @include functions.width-height($width: 17px)
+                    span
+                        font-size: 1.2rem
+// LeftLayot - Sidebar -bottom
+#bottom-sidebar
+    text-align: center
+    a
+        @include functions.flex-center-gap($gap: .3rem)
+        justify-content: center
+        svg
+            @include functions.width-height($width: 19px)
+            
+
+// RightLayout, Display main slot
+#rightLayout
+    position: relative
+// RightLayout - Header
+#headerApp
+    @include mixins.flex-center-f-end
+    @include functions.responsive($w: 991px)
+        @include mixins.flex-center-between()
+    padding: 2rem
+    background: map-get(variables.$colors, color-secundary)
+    box-shadow: variables.$box-shadow
+    position: sticky
+    top: 0
+    right: 0
+    z-index: 888
+    nav
+        ul
+            @include functions.flex-center-gap($gap: 2rem)
+            li 
+                a
+                    @include functions.flex-center-gap($gap: .6rem)
+                    svg
+                        @include functions.width-height($width: 18px)
+                        
+                    span
+                        font-size: 1.1rem
+                        font-weight: 700
+                    
+    #logo-app
+        display: none
+        @include functions.responsive($w: 991px)
+            display: flex
+// RightLayout - CenterLayout
+#center-rightLayout
+    @include functions.flex-column-gap($gap: .7rem)
+    justify-content: space-between
+    min-height: 100vh
+// RightLayout - main
+#main
+    background: map-get(variables.$colors, color-secundary)
+    box-shadow: variables.$box-shadow
+    min-height: 100vh
+    padding: 2rem
+// RightLayout - Footer
+#footerApp
+    background: map-get(variables.$colors, color-secundary)
+    box-shadow: variables.$box-shadow
+    padding: 2rem
+    @include functions.flex-column-gap($gap: 1rem)
+    align-items: center
+    justify-content: center
+    p
+        font-size: 0.8rem
+        display: none
+        @include functions.responsive($w: 700px)
+            display: inline-block
+// RightLayout - Footer - map-link-footer
+#map-link-footer
+    @include functions.flex-center-gap($gap: 1rem)
+    justify-content: center
+    a
+        font-size: 1.1rem
+// RightLayout - Footer - link-social-footer
+#link-social
+    @include functions.flex-center-gap($gap: 1rem)
+    svg
+        @include functions.width-height($width: 14px)
+// Logo App
+#logo-app
+    @include functions.flex-center-gap($gap: .3rem)
+    span
+        font-size: 1.3rem
+        font-weight: bold
+// menu btn
+#menu-btn
+   color: map-get(variables.$colors, white)
+   background: transparent
+   margin-top: 0.4rem
+   display: none
+   svg
+    @include functions.width-height($width: 24px)
+   @include functions.responsive($w: 991px)
+    display: block
+    
+// close btn
+#close-btn
+    position: absolute
+    top: 2% 
+    right: 4%
+    display: none
+    @include functions.width-height($width: 28px)
+    @include functions.responsive($w: 1024px)
+        display: block
+// btn form
+.btn-form
+    padding: 0.9rem 1rem 
+    background: map-get(variables.$colors, color-primary)   
+    font-size: 1.4rem
+    font-weight: bold
+    box-shadow: variables.$box-shadow
+    border-radius: 1rem
+
+// form store
+#form-store
+    padding: 2rem
+    @include functions.max-width($width: 700px)
+    border: .1rem solid #fff
+    .input-group
+        @include functions.flex-column-gap($gap: 2rem)
+        .input
+            @include functions.flex-column-gap($gap: .7rem)
+            label
+                font-size: 1.2rem
+                font-weight: 700
+            input, textarea
+                border: .1rem solid map-get(variables.$colors, white)
+                border-radius: .9rem
+            input, select
+                height: 40px
+                padding: 0 2rem
+            input
+                padding-left: 0.6rem
+                &::placeholder
+                    font-size: .8rem
+            textarea
+                height: 120px
+                resize: none
+                display: block
+            input[type="file"]
+                opacity: 0
+                z-index: 100
+                position: absolute
+                top: 0
+                right: 0
+                left: 0
+                bottom: 0
+        .file
+            height: 90px
+            width: 100%
+            border: .1rem solid #fff
+            position: relative
+            z-index: 7
+            label
+                position: absolute
+                top: 0
+                left: 0
+                right: 0
+                bottom: 0
+                display: flex
+                align-items: center
+                justify-content: center
+                gap: .5rem
+                z-index: 6
+        .button
+            align-items: flex-end !important
+
+
+        

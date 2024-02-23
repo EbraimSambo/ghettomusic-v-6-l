@@ -1,0 +1,40 @@
+@mixin responsive($w)
+    @media ( max-width: $w )
+        @content
+
+@mixin flex-column-space-between-gap($gap)
+    display: flex
+    flex-direction: column
+    gap: $gap
+    justify-content: space-between
+@mixin flex-gap($gap)
+    display: flex
+    gap: $gap
+@mixin flex-column-gap($gap)
+    display: flex
+    flex-direction: column
+    gap: $gap
+
+@mixin flex-center-gap($gap)
+    display: flex
+    align-items: center
+    gap: $gap
+
+@mixin flex-center-center-center-coloumn-gap($gap)
+    align-items: center
+    justify-content: center
+    gap: $gap
+
+@mixin grid-repeat($columns, $width, $gap)
+    display: grid
+    grid-template-columns: repeat($columns, $width)
+    gap: $gap
+
+@mixin width-height($width)
+    width: 100%
+    max-width: $width
+    height: $width
+
+@mixin max-width($width)
+    width: 100%
+    max-width: $width
